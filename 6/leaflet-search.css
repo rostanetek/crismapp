@@ -1,0 +1,144 @@
+
+.leaflet-container .leaflet-control-search {
+	/*position:relative;
+	float:left;
+	
+	color:#1978cf;
+	background-color: inherit;
+	z-index:1000;	
+	box-shadow: 0 1px 7px rgba(0,0,0,0.65);*/
+
+}
+.leaflet-control-search.search-exp {/*expanded*/
+	transition: all 500ms ease 0s;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+	
+	height: 36px;
+    position: absolute;
+    right: 50px;
+	width:330px;
+	
+
+	
+}
+.leaflet-control-search .search-input {
+	display:block;
+	background-color: rgba(0, 0, 0, 0.75);
+    border: 0 none;
+    float: left;
+    font-size: 14px;
+    height: 36px;
+    padding: 0 18px;
+    width: 350px;
+	color: white;
+}
+.leaflet-control-search.search-load .search-input {
+	background: url('loader.gif') no-repeat center right #fff;
+}
+.leaflet-control-search.search-load .search-cancel {
+	visibility:hidden;
+}
+.leaflet-control-search .search-cancel {
+	background: url("search-icon.png") no-repeat scroll 0 -46px rgba(0, 0, 0, 0);
+    display: block;
+    height: 18px;
+    opacity: 0.8;
+    position: absolute;
+    right: 35px;
+    text-decoration: none;
+    top: 30px;
+    width: 22px;		
+	margin-top:-28px;
+}
+.leaflet-control-search .search-cancel:hover {
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+.leaflet-control-search .search-cancel span {
+	display:none;/* comment for cancel button imageless */
+	font-size:18px;
+	line-height:20px;
+	color:#ccc;
+	font-weight:bold;
+	
+}
+.leaflet-control-search .search-cancel:hover span {
+	color:#aaa;
+}
+.leaflet-control-search .search-button {
+
+	background-color: rgba(0, 0, 0, 0.75);
+    background-image: url("search2.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: gold;
+    /*display: block;*/
+	display:none;
+    float: left;
+    height: 36px;
+    width: 36px;
+	
+
+}
+.leaflet-control-search .search-button:hover {
+	background-color: rgba(0, 0, 0, 0.75);
+}
+.leaflet-control-search .search-tooltip {
+	position:absolute;
+	top:100%;
+	left:0;
+	margin-top: 36px !important;
+	float:left;
+	min-width:120px;
+	max-height:122px;
+	
+	
+	z-index:1010;
+	overflow-y:auto;
+	overflow-x:hidden;	
+}
+
+.search-exp2
+{
+margin-top:28px;
+}
+
+
+.leaflet-control-search .search-tip {
+	padding:2px 20px;
+	display:block;
+	color:white;
+	background-color: rgba(0, 0, 0, 0.75);
+	
+
+}
+.leaflet-control-search .search-tip
+{
+border-bottom:1px solid white;
+}
+
+.leaflet-control-search .search-tip-select,
+.leaflet-control-search .search-tip:hover,
+.leaflet-control-search .search-button:hover {
+	background-color: gold;
+	border-bottom:1px solid gold;
+	color: black;
+	
+}
+.leaflet-control-search .search-alert {
+	cursor:pointer;
+	clear:both;
+	font-size:.75em;
+	margin-bottom:5px;
+	padding:0 .25em;
+	color:white;
+	font-weight:bold;
+	background-color: red;
+}
+
+
+input.search-input:focus
+{
+background-color: gold;
+color: white;
+}

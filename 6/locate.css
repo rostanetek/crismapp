@@ -1,0 +1,22 @@
+.leaflet-control-locate {
+background-image: url(pin2.png);
+background-repeat:no-repeat;
+background-position:center center;
+background-color: rgba(0, 0, 0, 0.7);
+transition: all 500ms ease 0s;
+display: block;
+height: 36px;
+width: 36px;
+box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+cursor:pointer;
+}
+
+.leaflet-control-locate:hover {
+background-image: url(pin.png);
+background-repeat:no-repeat;
+background-position:center center;
+ background-color: gold;
+ color: black;
+
+}
+

@@ -1,0 +1,7 @@
+.leaflet-control-draw-measure:before {
+font-family: FontAwesome;
+content: "\f07e";
+background-color: rgb(0, 0, 0, 0.7);
+font-size:150%;
+	
+}

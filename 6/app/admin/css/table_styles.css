@@ -1,0 +1,217 @@
+/*
+ * Mysql Ajax Table Editor
+ *
+ * Copyright (c) 2014 Chris Kitchen <info@mysqlajaxtableeditor.com>
+ * All rights reserved.
+ *
+ * See COPYING file for license information.
+ *
+ * Download the latest version from
+ * http://www.mysqlajaxtableeditor.com
+ */
+ 
+.mateOrderColumn {
+	border: 1px solid #333;
+	padding: 2px;
+	list-style: none;
+	margin: 2px auto;
+	cursor: move;
+	line-height: 100%;
+	width: 400px;
+}
+
+.mateOrderColumnsContainer {
+	margin: 0 auto;
+	padding: 0 0 0 0;
+	width: 420px;
+}
+
+#ajaxLoader1 {
+	position: absolute;
+	left: 10px;
+	top: 0px;
+}
+
+table.mateTable {
+	border: 1px solid #ccc;
+	color: #494949;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.mateTable tr.header {
+	background: url('../images/table_bg.gif') top left repeat-x;
+	height: 24px;
+	font-weight: bold;
+}
+
+table.mateTable tr.header a {
+	font-weight: bold;
+	color: #003A73;
+}
+
+table.mateTable tr.header td {
+	white-space: nowrap;
+}
+
+table.mateTable tr.odd {
+	background-color: #ffffff;
+}
+
+table.mateTable tr.even {
+	background-color: #ededed;
+}
+
+table.mateTable tr.clickable {
+	cursor: pointer;
+}
+
+table.mateTable tr.selected {
+	background-color: #fcffd0 !important;
+}
+
+table.mateTable td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	text-align: left;
+}
+
+table.mateTable td.labelCell {
+	font-weight: bold;
+	text-align: right;
+}
+
+table.mateTable td span.highlight {
+	background-color: #FFF547;
+}
+
+.addInPlaceBtnsDiv button, .mateSearchStringDiv button, .mateBtnsDiv button, .mateAdvancedSearchBtnsDiv button, .mateEditRowBtnsDiv button, .mateAddRowBtnsDiv button, .mateBtnsDiv select, .mateSearchBtnsDiv button, .mateSearchBtnsDiv select{
+	margin: 2px;
+}
+
+.mateCriteriaDiv {
+	margin: 5px;
+}
+
+.mateAdvancedSearchCriteriaDiv {
+	margin: 8px;
+}
+
+.mateAdvancedSearchCriteriaDiv span {
+	margin-right: 8px;
+}
+
+
+.mateSearchStringDiv {
+	margin-top: 5px;
+}
+
+.mateUpdateInPlaceDiv {
+	text-align: center;
+	margin: 5px;
+}
+
+.mateTitleDiv {
+	padding: 2px;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;	
+}
+
+.mateAjaxLoaderDiv {
+	position: relative;
+	text-align: center;
+}
+
+.mateTableDiv {
+	text-align: center;
+}
+
+.mateRecordLayerDiv {
+	text-align: center;
+}
+
+.mateSearchBtnsDiv {
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+/* Pagination CSS
+
+---------------------------------------- */
+
+.mateSelPage a{
+    padding: 0 2px;
+    margin: 0 2px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #bfbfbf;
+    border: 1px solid #bfbfbf;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+
+
+
+.mateNavPage a, .mateNavPage a:link, .mateNavPage a:visited, .mateNavPage a:active {
+    font-weight: normal;
+    text-decoration: none;
+    color: #747474;
+    margin: 0 2px;
+    padding: 0 2px;
+    background-color: #eeeeee;
+    border: 1px solid #bababa;
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+
+
+.mateNavPage a:hover {
+    border-color: #d2d2d2;
+    background-color: #d2d2d2;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.matePageLinksDiv {
+	padding: 5px;
+}
+
+div.mateTooltipErrDiv {
+	position: fixed;
+	top: 80px;
+	width: 50%;
+	left: 23%;
+	z-index: 500;
+	background: #c60505;
+	border: 2px solid white;
+	padding: 10px 2%;
+	color: white;
+	border-radius: 20px;
+	font: bold 14px "Helvetica Neue", Sans-Serif;
+	box-shadow: 0 0 7px black;
+	text-align: center;
+}
+
+div.mateTooltipMsgDiv {
+	position: fixed;
+	top: 80px; 
+	width: 50%;
+	left: 23%;
+	z-index: 500;
+	background: #0033cc;
+	border: 2px solid white;
+	padding: 10px 2%;
+	color: white;
+	border-radius: 20px;
+	font: bold 14px "Helvetica Neue", Sans-Serif;
+	box-shadow: 0 0 7px black;
+	text-align: center;
+}
+
+
+

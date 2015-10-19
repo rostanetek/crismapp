@@ -1,0 +1,18 @@
+
+.leaflet-control-easyPrint :before {
+font-family: FontAwesome;
+content: "\f02f";
+background-color: rgb(0, 0, 0, 0.7);
+font-size:150%;
+}
+
+.leaflet-control-easyPrint a:hover{
+ background-color: gold; 
+}
+
+@media print {
+
+	html {padding: 0px!important;}
+	.leaflet-control-easyPrint-button{display: none!important;}
+
+}

@@ -1,0 +1,149 @@
+/* 
+ * OpenCage Data Search Control v1.0.1 - 2014-09-11
+ * Copyright (c) 2014, OpenCage Data (a Lokku brand) 
+ * info@opencagedata.com 
+ * http://geocoder.opencagedata.com 
+ * 
+ * Licensed under the BSD license. 
+ * Demo: http://geocoder.opencagedata.com/code.html 
+ * Source: git@github.com:lokku/leaflet-opencage-search.git 
+ */
+.leaflet-control-ocd-search {
+	background-color: rgba(255,215,0,  0.8);
+  /*  height: 36px;
+    position: absolute;
+    right: 50px;
+   */
+transition: all 500ms ease 0s;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.leaflet-touch .leaflet-control-ocd-search {
+	box-shadow: none;
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+    line-height: 30px;
+}
+
+.leaflet-control-ocd-search-form {
+	display: inline;
+}
+
+.leaflet-control-ocd-search-form input,
+.leaflet-control-ocd-search-form ul,
+.leaflet-control-ocd-search-error {
+	border: 0;
+	color: black;
+	
+}
+
+.leaflet-control-ocd-search-form input {
+	font-size: 16px;
+	width: 0;
+	transition: all 500ms ease 0s;
+}
+
+.leaflet-touch .leaflet-control-ocd-search-form input {
+	font-size: 22px;
+}
+
+.leaflet-control-ocd-search-icon {
+	width: 36px;
+	height: 36px;
+	background-image: url(geocoder.png);
+	background-repeat: no-repeat;
+	/*background-position: center;*/
+	background-position: center center;
+	float: right;
+	cursor: pointer;
+
+}
+
+.leaflet-touch .leaflet-control-ocd-search-icon {
+	margin-top: 2px;
+	width: 30px;
+}
+
+.leaflet-control-ocd-search-spinner .leaflet-control-ocd-search-icon {
+	background-image: url(spinner.gif);
+}
+
+.leaflet-control-ocd-search-expanded input,
+.leaflet-control-ocd-search-error {
+	padding-top:5px;
+	width: 250px;
+	margin-left: 4px;
+	padding-left: 4px;
+	padding-right: 0px;
+	color: black;
+	background-color: inherit;
+}
+
+.leaflet-control-ocd-search-form input:focus {
+	outline: none;
+}
+
+.leaflet-control-ocd-search-form button {
+	display: none;
+}
+
+.leaflet-control-ocd-search-form-no-error {
+	display: none;
+}
+
+.leaflet-control-ocd-search-error {
+	margin-top: 8px;
+	display: block;
+	color: #444;
+}
+
+ul.leaflet-control-ocd-search-alternatives {
+	width: 260px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	list-style: none;
+	padding: 0;
+	transition: all 500ms ease 0s;
+	background-color: rgba(255,215,0,  0.8);
+	margin-top: 10px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.leaflet-control-ocd-search-alternatives-minimized {
+	width: 0 !important;
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+.leaflet-control-ocd-search-alternatives li {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border-bottom: 1px solid rgba(0,0,0, 0.5);
+	padding: 0;
+}
+
+
+.leaflet-control-ocd-search-alternatives li:last-child {
+	border-bottom: none;
+}
+
+.leaflet-control-ocd-search-alternatives a {
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 6px 8px 16px 6px;
+	font-size: 14px;
+}
+
+.leaflet-touch .leaflet-control-ocd-search-alternatives a {
+	font-size: 18px;
+}
+
+.leaflet-control-ocd-search-alternatives a:hover,
+.leaflet-control-ocd-search-selected {
+	background-color: gold;
+}

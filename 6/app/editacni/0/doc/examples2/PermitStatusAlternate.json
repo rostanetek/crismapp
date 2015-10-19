@@ -1,0 +1,481 @@
+{
+    "license": [
+        " | Copyright 2012 Esri",
+        " |",
+        " | Licensed under the Apache License, Version 2.0 (the 'License');",
+        " | you may not use this file except in compliance with the License.",
+        " | You may obtain a copy of the License at",
+        " |",
+        " |    http://www.apache.org/licenses/LICENSE-2.0",
+        " |",
+        " | Unless required by applicable law or agreed to in writing, software",
+        " | distributed under the License is distributed on an 'AS IS' BASIS,",
+        " | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
+        " | See the License for the specific language governing permissions and",
+        " | limitations under the License."
+    ],
+
+    "values": {
+        "webmap": "638e7368b9ee4a0faf6bc2e9d38e85e1",
+        "titleBar.title": "Permit Status",
+        "colorizer.theme": "Turquoise",
+        "permitSearcherEnter.hint": "Aquatic",
+        "permitSearcher.searchLayerName": "Permits",
+        "permitSearcher.searchFields": "PERMITTYPE",
+        "nameSearcherEnter.hint": "Pates",
+        "nameSearcher.searchLayerName": "Permits",
+        "nameSearcher.searchFields": "APPLICANT",
+        "filter.hint1": "Permit types to display",
+        "filter.fieldname1": "PERMITTYPE",
+        "filter.value1": "",
+        "highlighter.showFeaturePopup": true,
+        "highlighter.highlightZoomLevel": 16,
+        "basemapBox.basemapgroupTitle": "",
+        "basemapBox.basemapgroupOwner": "",
+        "helpMessageBox.content": "Finder<hr><br>Finder (formerly known as Parcel Viewer) provides the general public and other interested parties access to searchable and interactive information such as property tax and assessment information or the locations of water access points.<br><br>To locate this information, click a feature on the map or search for the feature by address, name, or another identifier such as Parcel ID."
+    },
+
+    "configurationSettings": [{
+        "category": "<b>Theme</b>",
+        "fields": [{
+            "label": "Color Scheme:",
+            "fieldName": "colorizer.theme",
+            "type": "string",
+            "options": [{
+                "label": "Turquoise",
+                "value": "Turquoise"
+            }, {
+                "label": "Royal Blue",
+                "value": "RoyalBlue"
+            }, {
+                "label": "Dodger Blue",
+                "value": "DodgerBlue"
+            }, {
+                "label": "Sky Blue",
+                "value": "SkyBlue"
+            }],
+            "tooltip": "Color of header bar and widget windows"
+        }]
+    }, {
+        "category": "<b>Map Settings</b>",
+        "fields": [{
+            "label": "Select a map",
+            "fieldName": "webmap",
+            "type": "webmap",
+            "tooltip": "Web map displayed in the application"
+        }, {
+            "label": "Alternate Basemap Group",
+            "fieldName": "basemapBox.basemapgroupTitle",
+            "type": "string",
+            "tooltip": "Name of basemap group, or leave blank to use default organization basemap group",
+            "placeholder": "Organization basemaps"
+        }, {
+            "label": "Basemap Group Owner",
+            "fieldName": "basemapBox.basemapgroupOwner",
+            "type": "string",
+            "tooltip": "Username of basemap group owner"
+        }]
+    }, {
+        "category": "<b>Filter Settings</b>",
+        "fields": [{
+            "label": "Filter Hint",
+            "fieldName": "filter.hint1",
+            "type": "string",
+            "tooltip": "Filter hint (e.g., permit type)"
+        }, {
+            "label": "Filter Field",
+            "fieldName": "filter.fieldname1",
+            "type": "string",
+            "tooltip": "Field used to filter the features displayed in the map",
+            "placeholder": "Name of filtering field"
+        }, {
+            "label": "Default Filter Value",
+            "fieldName": "filter.value1",
+            "type": "string",
+            "tooltip": "Initial filter value.",
+            "placeholder": "Initial filter value"
+        }]
+    }, {
+        "category": "<b>Find Settings</b>",
+        "fields": [{
+            "label": "Find by Permit Hint",
+            "fieldName": "permitSearcherEnter.hint",
+            "type": "string",
+            "tooltip": "Search hint (e.g. Find a permit)"
+        }, {
+            "label": "Find by Permit Layers",
+            "fieldName": "permitSearcher.searchLayerName",
+            "type": "string",
+            "tooltip": "Comma-separated list of map layer names. Only values in these layers will be searched. One or many layers may be specified.",
+            "placeholder": "Layer 1, Layer 2, …"
+        }, {
+            "label": "Find by Permit Fields",
+            "fieldName": "permitSearcher.searchFields",
+            "type": "string",
+            "tooltip": "Comma-separated list of Find by Permit Layer field names. Only values in these fields will be searched. One or many fields may be specified.",
+            "placeholder": "FIELD1, FIELD2, …"
+        }, {
+            "label": "Find by Name Hint",
+            "fieldName": "nameSearcherEnter.hint",
+            "type": "string",
+            "tooltip": "Search hint (e.g. Find a name)"
+        }, {
+            "label": "Find by Name Layers",
+            "fieldName": "nameSearcher.searchLayerName",
+            "type": "string",
+            "tooltip": "Comma-separated list of map layer names. Only values in these layers will be searched. One or many layers may be specified.",
+            "placeholder": "Layer 1, Layer 2, …"
+        }, {
+            "label": "Find by Name Fields",
+            "fieldName": "nameSearcher.searchFields",
+            "type": "string",
+            "tooltip": "Comma-separated list of Find by Name Layer field names. Only values in these fields will be searched. One or many fields may be specified.",
+            "placeholder": "FIELD1, FIELD2, …"
+        }, {
+            "label": "Zoom Level",
+            "fieldName": "highlighter.highlightZoomLevel",
+            "type": "number",
+            "constraints": {
+                "min": 0,
+                "places": 0
+            },
+            "tooltip": "Map zoom level for viewing selected features"
+        }, {
+            "label": "Show Popup for Selected Feature",
+            "fieldName": "highlighter.showFeaturePopup",
+            "type": "boolean",
+            "tooltip": "Enable to automatically open the popup for selected search result features."
+        }]
+    }, {
+        "category": "<b>Application Help</b>",
+        "fields": [{
+            "label": "Help Text",
+            "fieldName": "helpMessageBox.content",
+            "type": "string",
+            "stringFieldOption": "textarea",
+            "tooltip": "Help text displayed to the end users of this application"
+        }]
+    }],
+
+    "ui": [{
+        "classname": "js.LGNotes",
+        "config": {
+            "notes": [
+                "@@@commit@@@"
+            ]
+        }
+    }, {
+        "classname": "js.LGColorizer",
+        "config": {
+            "rootId": "colorizer",
+            "parentDiv": "contentDiv",
+            "colorTable": [{
+                "theme": "Turquoise",
+                "colors": ["#fff", "#00868b", "#00dadf", "#00dadf"]
+            }, {
+                "theme": "RoyalBlue",
+                "colors": ["#fff", "RoyalBlue", "#88a2ec", "#88a2ec"]
+            }, {
+                "theme": "DodgerBlue",
+                "colors": ["#fff", "#104e8b", "#1a78d7", "#1a78d7"]
+            }, {
+                "theme": "SkyBlue",
+                "colors": ["DarkSlateGray", "SkyBlue", "#59bae3", "#59bae3"]
+            }]
+        }
+    }, {
+        "classname": "js.LGFrame",
+        "styles": ".appFrame{width:100%;height:100%;overflow:hidden;position:absolute}.frameHeader{width:275px;height:64px;padding:0px;overflow:hidden;position:relative;float:right;z-index:5}.frameContent{width:100%;padding:0px;position:relative}.okIE .frameHeader{border-bottom-left-radius:8px}",
+        "config": {
+            "rootId": "outerFrame",
+            "headerDivId": "headerFrame",
+            "contentDivId": "contentFrame",
+            "parentDiv": "contentDiv",
+            "rootClass": "appFrame",
+            "headerDivClass": "frameHeader",
+            "contentDivClass": "frameContent"
+        }
+    }, {
+        "classname": "js.LGBusy",
+        "styles": ".busyImage{display:none;background-image:url('images/loading.gif');width:80px;height:17px;position:absolute;z-index:100}",
+        "config": {
+            "rootId": "busyIndicator",
+            "parentDiv": "contentFrame",
+            "horizOffset": 0,
+            "vertOffset": 0,
+            "busyImageClass": "busyImage"
+        }
+    }, {
+        "classname": "js.LGMap",
+        "styles": ".mapContainer{margin:0px;padding:0px;overflow:hidden;position:absolute}.simpleInfoWindow .close{width:32px!important;height:32px!important;background-size:32px 32px;left:244px!important;top:-18px!important}.simpleInfoWindow .title{min-height:14px}",
+        "config": {
+            "rootId": "map",
+            "rootClass": "mapContainer",
+            "parentDiv": "contentDiv",
+            "fill": true,
+            "xmin": -9689306,
+            "ymin": 4291462,
+            "xmax": -9628921,
+            "ymax": 4348026
+        }
+    }, {
+        "classname": "js.LGHighlighter",
+        "config": {
+            "rootId": "highlighter",
+            "parentDiv": "contentFrame",
+            "dependencyId": "map",
+            "lineHiliteColor": "#0000ff",
+            "fillHiliteColor": [0, 0, 255, 0.1]
+        }
+    }, {
+        "classname": "js.LGFrame",
+        "styles": ".titleFrame{width:300px;height:45px;overflow:hidden;position:absolute}.titleFrameHeader{width:100%;height:45px;padding:0px;overflow:hidden;position:absolute}.titleFrameContent{width:100%;padding:0px;position:absolute}.okIE .titleFrameHeader{border-top-right-radius:8px}",
+        "config": {
+            "rootId": "titleFrame",
+            "headerDivId": "titleHeaderFrame",
+            "contentDivId": "titleContentFrame",
+            "parentDiv": "contentDiv",
+            "rootClass": "titleFrame",
+            "horizOffset": 1,
+            "vertOffset": -1,
+            "headerDivClass": "titleFrameHeader",
+            "contentDivClass": "titleFrameContent"
+        }
+    }, {
+        "classname": "js.LGTitleBar",
+        "styles": ".appTitleBar{height:45px;margin:0px;padding:2px;overflow:hidden;position:absolute}.titleIcon{display:none}.titleText{height:45px;margin:4px;padding:0px;font-size:200%;vertical-align:middle;word-wrap:break-word;float:left}",
+        "config": {
+            "rootId": "titleBar",
+            "parentDiv": "titleHeaderFrame",
+            "rootClass": "appTitleBar",
+            "horizOffset": 4,
+            "vertOffset": 0,
+            "iconClass": "titleIcon",
+            "titleClass": "titleText"
+        }
+    }, {
+        "classname": "js.LGMapDijitContainer",
+        "styles": ".dijitContainer{position:absolute;z-index:35;}",
+        "config": {
+            "rootId": "homeButton",
+            "parentDiv": "map",
+            "dependencyId": "map",
+            "rootClass": "dijitContainer",
+            "horizOffset": 19,
+            "vertOffset": 91,
+            "dijitAmd": "esri/dijit/HomeButton"
+        }
+    }, {
+        "classname": "js.LGMapDijitContainer",
+        "config": {
+            "rootId": "homeButton",
+            "parentDiv": "map",
+            "dependencyId": "map",
+            "rootClass": "dijitContainer",
+            "horizOffset": 19,
+            "vertOffset": 132,
+            "dijitAmd": "esri/dijit/LocateButton"
+        }
+    }, {
+        "classname": "js.LGGallery",
+        "styles": ".commandPanel{height:52px;margin:0px;padding:2px;overflow:hidden;position:absolute;text-align:center;vertical-align:middle}.commandPanel table{border-spacing:0px}.commandPanelArrow{width:12px;height:48px;margin:4px;padding:0px;cursor:pointer;vertical-align:middle}.okIE .commandPanelArrow{border-radius:4px}.commandButton{width:44px;height:44px;text-align:center;cursor:pointer}.okIE .commandButton{border-radius:8px}.commandTextButton{width:100%;height:44px;cursor:pointer}.okIE .commandTextButton{border-radius:8px}.commandText{display:inline;height:32px;margin-left:2px;font-size:120%;overflow:hidden;vertical-align:bottom}.okIE .commandText{display:inline-block}.commandIcon{width:32px;height:32px;margin-top:6px}",
+        "config": {
+            "rootId": "commandPanel",
+            "parentDiv": "headerFrame",
+            "rootClass": "commandPanel",
+            "horizOffset": -4,
+            "vertOffset": 0,
+            "itemClass": "commandPanelItem",
+            "arrowClass": "commandPanelArrow"
+        }
+    }, {
+        "classname": "js.LGSearchFeatureLayerMultiplexer",
+        "config": {
+            "rootId": "permitSearcher",
+            "parentDiv": "contentFrame",
+            "dependencyId": "map",
+            "busyIndicator": "busyIndicator",
+            "publishPointsOnly": false,
+            "searchPattern": "%${1}%",
+            "caseInsensitiveSearch": true
+        }
+    }, {
+        "classname": "js.LGSearchFeatureLayerMultiplexer",
+        "config": {
+            "rootId": "nameSearcher",
+            "parentDiv": "contentFrame",
+            "dependencyId": "map",
+            "busyIndicator": "busyIndicator",
+            "publishPointsOnly": false,
+            "searchPattern": "%${1}%",
+            "caseInsensitiveSearch": true
+        }
+    }, {
+        "classname": "js.LGLaunchUrl",
+        "config": {
+            "rootId": "launcher",
+            "sameWinTrigger": "launch/parent",
+            "newWinTrigger": "launch/blank"
+        }
+    }, {
+        "classname": "js.LGMessageBox",
+        "styles": ".helpMessageBox{display:none;width:242px;max-height:380px;padding:16px;position:absolute;overflow:auto;z-index:40;word-wrap:break-word}.okIE .helpMessageBox{border-radius:8px}",
+        "config": {
+            "rootId": "helpMessageBox",
+            "parentDiv": "contentFrame",
+            "rootClass": "helpMessageBox",
+            "horizOffset": -1,
+            "vertOffset": [2, -2],
+            "trigger": "help"
+        }
+    }, {
+        "classname": "js.LGPublishEcho",
+        "config": {
+            "rootId": "diagMessageBox",
+            "parentDiv": "contentFrame",
+            "rootClass": "helpMessageBox",
+            "horizOffset": -2,
+            "vertOffset": 2,
+            "trigger": "error"
+        }
+    }, {
+        "classname": "js.LGBasemapBox",
+        "styles": ".basemapBox{display:none;width:266px;padding:4px;position:absolute;overflow:hidden;z-index:40;word-wrap:break-word}.okIE .basemapBox{border-radius:8px}.basemapGallery{width:96%;height:96%;padding:4px;overflow-y:auto;}.lt-ie9 .basemapGallery{height:220px}",
+        "config": {
+            "rootId": "basemapBox",
+            "parentDiv": "contentFrame",
+            "rootClass": "basemapBox",
+            "galleryClass": "basemapGallery",
+            "horizOffset": -1,
+            "vertOffset": [2, -2],
+            "trigger": "basemap",
+            "dependencyId": "map",
+            "webmapThumbnail": "images/webmap.png"
+        }
+    }, {
+        "classname": "js.LGMapBasedMenuBox",
+        "styles": ".shareBox{display:none;width:266px;padding:4px;position:absolute;overflow:hidden;z-index:40;word-wrap:break-word}.okIE .shareBox{border-radius:8px}",
+        "config": {
+            "rootId": "shareBox",
+            "parentDiv": "contentFrame",
+            "rootClass": "shareBox",
+            "horizOffset": -1,
+            "vertOffset": 2,
+            "trigger": "share",
+            "dependencyId": "map"
+        }
+    }, {
+        "classname": "js.LGSearchBoxByText",
+        "styles": ".searchBox{display:none;width:266px;padding:4px;position:absolute;overflow:hidden;z-index:40;word-wrap:break-word}.okIE .searchBox{border-radius:8px}.resultsListBox{width:96%;top:53px;overflow:auto}.okIE .resultsListBox{position:absolute;bottom:4px}.lt-ie9 .resultsListBox{width:100%;height:182px}.resultsListTable{width:97%;margin:4px}.lt-ie9 .resultsListTable{width:87%}.resultsListBody{width:80%}.resultsListSearching{background-image:url('images/loading.gif');background-position:center center;background-repeat:no-repeat;width:100%;height:1.5em}.resultsListEntry{width:84%;margin:2px;padding:4px;cursor:pointer}",
+        "config": {
+            "rootId": "permitSearcherEnter",
+            "trigger": "permitSearch",
+            "publish": "showFeature",
+            "parentDiv": "contentFrame",
+            "rootClass": "searchBox",
+            "horizOffset": -1,
+            "vertOffset": [2, -2],
+            "searcher": "permitSearcher",
+            "showPrompt": "Find by permit type",
+            "resultsListBoxClass": "resultsListBox",
+            "resultsListTableClass": "resultsListTable",
+            "resultsListBodyClass": "resultsListBody",
+            "resultsListSearchingClass": "resultsListSearching",
+            "resultsListEntryClass": "resultsListEntry"
+        }
+    }, {
+        "classname": "js.LGSearchBoxByText",
+        "config": {
+            "rootId": "nameSearcherEnter",
+            "trigger": "permitName",
+            "publish": "showFeature",
+            "parentDiv": "contentFrame",
+            "rootClass": "searchBox",
+            "horizOffset": -1,
+            "vertOffset": [2, -2],
+            "searcher": "nameSearcher",
+            "showPrompt": "Find by account name",
+            "resultsListBoxClass": "resultsListBox",
+            "resultsListTableClass": "resultsListTable",
+            "resultsListBodyClass": "resultsListBody",
+            "resultsListSearchingClass": "resultsListSearching",
+            "resultsListEntryClass": "resultsListEntry"
+        }
+    }, {
+        "classname": "js.LGFilterLayers1",
+        "styles": ".filter{display:none;width:266px;padding:4px;position:absolute;overflow:hidden;z-index:40;word-wrap:break-word}.okIE .filter{border-radius:8px}",
+        "config": {
+            "rootId": "filter",
+            "tooltip": "@tooltips.filter",
+            "parentDiv": "contentFrame",
+            "rootClass": "filter",
+            "horizOffset": -1,
+            "vertOffset": 2,
+            "defnExpression": "${fieldname1}=${value1}",
+            "trigger": "filter",
+            "dependencyId": "map",
+            "busyIndicator": "busyIndicator",
+            "nonieSwitchDelaySecs": "1.5",
+            "ieSwitchDelaySecs": "3.0"
+        }
+    }, {
+        "classname": "js.LGCommand",
+        "config": {
+            "rootId": "filterByPermit",
+            "tooltip": "Permit types to display",
+            "iconUrl": "http://localgovtemplates2.esri.com/support/filter.png",
+            "parentDiv": "commandPanel",
+            "rootClass": "commandButton",
+            "iconClass": "commandIcon",
+            "dependencyId": "map",
+            "publish": "filter"
+        }
+    }, {
+        "classname": "js.LGCommand",
+        "config": {
+            "rootId": "searchByPermit",
+            "tooltip": "Find by permit type",
+            "iconUrl": "http://tryitlive.arcgis.com/permitstatus/images/logo.png",
+            "parentDiv": "commandPanel",
+            "rootClass": "commandButton",
+            "iconClass": "commandIcon",
+            "dependencyId": "permitSearcher",
+            "publish": "permitSearch"
+        }
+    }, {
+        "classname": "js.LGCommand",
+        "config": {
+            "rootId": "searchByAcctName",
+            "tooltip": "Find by account name",
+            "iconUrl": "http://localgovtemplates2.esri.com/support/person.png",
+            "parentDiv": "commandPanel",
+            "rootClass": "commandButton",
+            "iconClass": "commandIcon",
+            "dependencyId": "nameSearcher",
+            "publish": "permitName"
+        }
+    }, {
+        "classname": "js.LGCommand",
+        "config": {
+            "rootId": "basemap",
+            "tooltip": "@tooltips.basemap",
+            "iconUrl": "images/basemap.png",
+            "parentDiv": "commandPanel",
+            "rootClass": "commandButton",
+            "iconClass": "commandIcon",
+            "dependencyId": "basemapBox",
+            "publish": "basemap"
+        }
+    }, {
+        "classname": "js.LGCommand",
+        "config": {
+            "rootId": "help",
+            "tooltip": "@tooltips.help",
+            "iconUrl": "images/help.png",
+            "parentDiv": "commandPanel",
+            "rootClass": "commandButton",
+            "iconClass": "commandIcon",
+            "publish": "help"
+        }
+    }]
+}

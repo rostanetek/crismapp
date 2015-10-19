@@ -1,0 +1,779 @@
+﻿
+
+<html>
+<head>
+<title>Příkazy | mapa</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-language" content="cs" />
+
+
+
+
+<!--[if lt IE 9]>
+<script src="../html5shiv.js" type="text/javascript"></script>
+<script src="../respond.js" type="text/javascript"></script>
+<![endif]-->
+
+
+<link rel="stylesheet" href="../leaflet.css" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+<!--[if IE]>
+<link rel="stylesheet" href="../ie.css">
+<![endif]-->
+ 
+ 
+<!-- zaklad leaflet -->
+<script src="../leaflet-src.js"></script>
+<script src="../leaflet.ajax.js"></script>
+<script src="../proj4-compressed.js"></script>
+<script src="../proj4leaflet.js"></script>
+<!-- zaklad leaflet -->
+
+
+<!-- mobilni zarizeni -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!--<script src="../leaflet.twofingerzoom.js"></script>
+ mobilni zarizeni -->
+
+
+<!-- tlacitko home -->
+<script src="../leaflet.home.js"></script>
+<link rel="stylesheet" href="../leaflet.home.css" />
+<!-- tlacitko home -->
+
+
+<!-- mereni+meritko -->
+<link rel="stylesheet" href="../distance.css" />
+<link rel="stylesheet" href="../leaflet.draw.css" />
+<script src="../leaflet.draw.js"></script>
+<script src="../Distance.js"></script>
+
+<link rel="stylesheet" href="../leaflet.measurecontrol.css" />
+<script src="../leaflet.draw.js"></script>
+<script src="../leaflet.measurecontrol.js"></script>
+<!-- mereni+meritko -->
+
+
+<!-- vyhledavani s naseptavacem -->
+<link rel="stylesheet" href="../leaflet-search.css" />
+<script src="../leaflet-search2.js"></script>
+<!-- vyhledavani s naseptavacem -->
+
+
+<!-- lokalizace současné pozice -->
+<link rel="stylesheet" href="../L.Control.Locate.css" />
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="../L.Control.Locate.ie.css"/>
+<![endif]-->
+<script src="../L.Control.Locate.js" ></script>
+<!-- lokalizace současné pozice -->
+
+
+<!-- souradnice -->
+<link rel="stylesheet" href="../L.Control.MousePosition.css" />
+<script src="../L.Control.MousePosition.js" ></script>
+<!-- souradnice -->
+  
+  
+<!-- prave tlacitko mysi --> 
+<link rel="stylesheet" href="../leaflet.contextmenu.css"/>
+<script src="../leaflet.contextmenu.js"></script>
+<!-- prave tlacitko mysi --> 
+  
+  
+<!-- tisk --> 
+<link rel="stylesheet" href="../easyPrint.css"/>
+<script src="../leaflet.easyPrint.js"></script>
+<!-- tisk --> 
+	 
+	 
+<!-- minimap -->  
+<link rel="stylesheet" href="../Control.MiniMap.css" />
+<script src="../Control.MiniMap.js" type="text/javascript"></script>
+<!-- minimap --> 
+
+
+<!-- sidebar --> 
+<script src="../leaflet-sidebar.js"></script>
+<link rel="stylesheet" href="../leaflet-sidebar.css" />
+<!-- sidebar --> 
+ 
+ 
+<!-- fulltextove vyhledavani --> 
+<script src="../esri-leaflet.js"></script>
+<script src="../esri-leaflet-geocoder.js"></script>
+<link rel="stylesheet" type="text/css" href="../esri-leaflet-geocoder.css">
+<!-- fulltextove vyhledavani --> 
+
+
+<!-- fullscreen --> 
+<script src='../leaflet.fullscreen.js'></script>
+<link href='../leaflet.fullscreen.css' rel='stylesheet' />
+<!-- fullscreen --> 
+
+
+<!-- tooltip -->
+<script src="../modernizr.js"></script>
+<!-- tooltip -->
+
+
+<!-- zalozky-hledani atributu-->
+<link rel="stylesheet" href="../jquery-ui2.css">
+<script src="../jquery-1.11.1.js"></script> 
+<script src="../jquery-ui.js"></script>
+<!-- zalozky hledani atributu-->
+
+<!-- omnivore pro Topojson <script src="../leaflet-omnivore.min.js"></script>-->
+
+
+<!-- kolecko nacitani za zacatku -->
+<script src="../spin.js"></script>
+<script src="../leaflet.spin.js"></script>
+<!-- kolecko nacitani za zacatku -->
+
+
+<!-- hledani schovani -->
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $('#showmenu').click(function() {
+                $('.menu').toggle("slide");
+        });
+
+    });
+</script>
+<!-- hledani schovani -->
+</head>
+ 
+<body>
+<!-- sidebar -->
+<div id="sidebar" class="sidebar collapsed">
+	<!-- menu -->
+	<ul class="sidebar-tabs" role="tablist" style="padding-top:10px;">
+		<li><a href="#vrstvy" role="tab"><i class="fa fa-bars"></i><span>Vrstvy</span></a></li>
+		<li><a href="#poi" role="tab"><i class="fa fa-user"></i><span>POI</span></a></li>
+		<li><a href="#napoveda" role="tab"><i class="fa fa-question"></i><span>Návod</span></a></li>
+	</ul>
+
+
+	<div class="sidebar-content active">
+		<!-- vrstvy -->
+		<div class="sidebar-pane" id="vrstvy">
+			<div id="controls"></div>
+		</div>
+		
+		<!-- poi -->
+		<div class="sidebar-pane" id="poi">
+			<ul class="zalozky">
+			<li><a onclick="map.setView([49.646082, 17.137400  ], 18);" href="#">Výchozí bod  </a> <span data-tooltip aria-haspopup='true' class='has-tip' title='domů'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span> </li><li><a onclick="map.setView([49.66901, 17.17332  ], 18);" href="#">Hynkov  </a></li><li><a onclick="map.setView([49.6436, 17.14347  ], 18);" href="#">Příkazy MŠ  </a></li>			</ul>
+		</div>
+		
+		<!-- napoveda -->
+		<div class="sidebar-pane" id="napoveda">
+			<h2>Nápověda</h2> <a href="../navod.pdf" style="color:gold;">ke stažení (PDF)</a>
+			<h3>Ovládání mapy</h3>
+			V mapě se lze pohybovat pomocí myši tzv. drag&drop - <b>stisknutím levého tlačítka a táhnutím myši do požadovaného směru</b>. Pravým tlačítkem myši vyvoláte kontextovou nabídku, která také umožnuje přiblížení či oddálení mapy. Dvojitý klik do mapy znamená její přiblížení. Pro <b>přiblížení/oddálení lze použít také ikony +/- (viz. níže) nebo kolečko myši</b>.
+			<br /><br /><h3>Zobrazení informací</h3>Kliknutím na příslušný objekt v mapě (bod, linii, či plochu) zobrazíte vyskakovací okno s informacemi.
+			<br /><br /><h3>Vrstvy</h3>Záložka "Vrstvy" v levém horním rohu umožňuje zobrazit vrstvy v mapě. V horní části se nachází výběr podkladové mapy. Níže je pak k dispozici přehled všech vrstev, které zobrazíte kliknutím na název vrstvy (= zatrhnutím tlačítka). V aplikaci je možné zobrazit libovolný počet vrstev, ale pouze jednu podkladovou mapu.
+			<br /><br /><h3>POI - body zájmu</h3>Záložka "POI" v levém horním rohu obsahuje seznam předdefinovaných bodů. Kliknutím na název konkrétního bodu se mapa na něj automaticky přiblíží.
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_hledani" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Vyhledávání</h3></div></div>
+			<div>Vyhledávání se nachází v pravém horním rohu obrazovky. Nejprve zvolte v záhlaví hledání ("záložkách") co chcete hledat, a posléze zadejte do vyhledávacího pole několik prvních znaků.  Vyhledávání Vám automaticky nabídne dostupné možnosti. Po kliknutí na jednu z možností, se mapa automaticky přiblíží a zvýrazní dané místo. Kliknutím na ikonu lupy, lze hledání minimalizovat.</div>
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_plus" style="float:left;"></div>&nbsp;<div class="napoveda napoveda_minus" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Zoom</h3></div></div>
+			<div>Umožňují přiblížení/oddálení mapy. Lze použít také kolečko myši v obou směrech, příp. dvojklik levým tlačítkem myši pro přiblížení.</div>
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_home" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Domů</h3></div></div>
+			<div>Zobrazí výchozí pozici mapy.</div>
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_full" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Celá obrazovka</h3></div></div>
+			<div>Umožní maximalizovat mapové pole na celou obrazovku monitoru, bez lišt prohlížeče. Pro zrušení zmáčkněte klávesu ESC nebo F11.</div>
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_lokalizace" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Lokalizace</h3></div></div>
+			<div>Umožní přibližně lokalizovat Vaši aktuální pozici. Přesnost lokalizace se může pohybovat od několika metrů v případě aktivní GPS při přístupu přes mobil/tablet až po několik kilometrů v případě internetového kabelového připojení. <><i>V případě, že používáte Internet Explorer s vyšší mírou zabezpečení a funkce nereaguje (Geolocation error), je potřeba povolit lokalizaci: klávesa alt-Nástroje-Možnosti internetu-záložka Osobní údaje-odškrknout Nikdy nepovolovat webům vyžadovat polohu-kliknout Použít-OK. Následně je třeba znovu načíst mapu (F5).</i></div>
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_tisk" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Tisk</h3></div></div>
+			<div>Umožní tisk mapy.</div>
+			
+			<div style="display:inline-flex; margin-top: 10px;"><div class="napoveda napoveda_mereni" style="float:left;"></div><div style="float:left; padding-left:10px;"><h3>Měření</h3></div></div>
+			<div>Umožní měření linií a ploch. Klikáním do mapy označte zjišťovaný průběh linie nebo obvodu plochy. Dvojklikem ukončíte měření a zobrazíte obsah měřené plochy (nutné min. 4 body).</div>
+		</div>
+	</div>
+	
+	<div class="uroven">
+	Příkazy | klient</div>
+	
+</div>
+
+<!-- mapove okno -->
+<div style="width:100%; height:100%" id="map">
+
+
+<div id="logo3"><a href="http://www.geocentrum.cz/" target="_blank" title="www.geocentrum.cz"><img src="../logo.png" /></a> </div>
+	
+<!-- hledani - zobrazit/skryt -->	
+<div class="hledatko">
+	<div id="showmenu" title="Zobrazit/skrýt hledání" onclick="document.getElementById('fulltext').style.display = 'none'; document.getElementById('ui-id-1').click();"></div>
+	<div class="menu" >
+			
+			<!-- vlastni vyhledani -->
+			<div id="tabs">
+				<ul>
+				<li><a onclick="document.getElementById('fulltext').style.display = 'none';" href="#tabs-1">Hledat v LABEL</a></li><li><a onclick="document.getElementById('fulltext').style.display = 'none';" href="#tabs-2">Hledat v CISLO</a></li>				<li><a onclick="document.getElementById('fulltext').style.display = 'block';" href="#tabs-0">Hledat adresu</a></li>
+				</ul>
+				<div id="tabs-1"></div><div id="tabs-2"></div>				<div id="tabs-0" style="width:350px; height:36px;"></div>
+			</div>
+	
+	</div>
+</div>
+
+
+
+</div>
+
+
+<!-- vlastni script mapy -->
+<script type='text/javascript'>
+function showCoordinates (e) {
+  alert(e.latlng);
+}
+function centerMap (e) {
+  map.panTo(e.latlng);
+}
+function zoomIn (e) {
+  map.zoomIn();
+}
+function zoomOut (e) {
+  map.zoomOut();
+}
+
+
+// ajax pro nacteni priloh
+function showUser(str) {
+if (str == "") {
+	document.getElementById("prilohy").innerHTML = "";
+	return;
+} else {
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// code for IE6, IE5
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("prilohy").innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET","getuser2.php?q="+str,true);
+	xmlhttp.send();
+}
+}
+
+
+// popup okno se vsemi atributy, ktere jsou v atrib.tabulce bez ohledu na vrstvu
+function popUp(f,l){
+	var out = [];
+	if (f.properties){
+		for(key in f.properties){
+			out.push(key+": "+f.properties[key]);
+		}
+		l.bindPopup(out.join("<br />"));
+	}
+}
+
+
+
+//podkladove mapy
+var base_1 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {maxZoom: 22,  maxNativeZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors' });var base_2 = L.tileLayer('http://geoportal.cuzk.cz/WMTS_ORTOFOTO_900913/WMTService.aspx?service=WMTS&request=GetTile&version=1.0.0&layer=orto&style=default&format=image/png&TileMatrixSet=googlemapscompatibleext2:epsg:3857&TileMatrix={z}&TileRow={y}&TileCol={x}', {maxZoom: 22,  maxNativeZoom: 18, attribution: 'WMTS - Ortofoto ČR | &copy ČÚZK <a href="http://www.cuzk.cz">www.cuzk.cz</a>' });var base_3 = L.tileLayer('http://geoportal.cuzk.cz/WMTS_ZM_900913/WMTService.aspx?service=WMTS&request=GetTile&version=1.0.0&layer=zm&style=default&format=image/jpeg&TileMatrixSet=googlemapscompatibleext2:epsg:3857&TileMatrix={z}&TileRow={y}&TileCol={x}', {maxZoom: 22,  maxNativeZoom: 18, attribution: 'WMTS - Ortofoto ČR | &copy ČÚZK <a href="http://www.cuzk.cz">www.cuzk.cz</a>' });
+var base = {
+"OpenStreetMap <span data-tooltip aria-haspopup='true' class='has-tip' title='&copy; OSM'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span>  ": base_1,"Satelitní © ČÚZK <span data-tooltip aria-haspopup='true' class='has-tip' title='blabla'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span>  ": base_2,"ZM ČR © ČÚZK ": base_3,};
+
+
+var ikonka_blue = L.icon({
+iconUrl: '../pin3.png',
+iconSize: [40, 40],
+iconAnchor: [20, 40],
+popupAnchor: [0, -28]
+});			
+			
+var ikonka_black = L.icon({
+iconUrl: '../pin.png',
+iconSize: [40, 40],
+iconAnchor: [20, 40],
+popupAnchor: [0, -28]
+});			
+
+			// nastaveni jednotlivych barev kartogramu // d == 545 ? 'green' : nebo d >= 5 ? '#green' :
+			function getColor_1(d) { return  d >= 545 ? 'green' : 
+d == 544 ? 'red' : 
+d == 543 ? 'purple' : 
+d <= 542 ? 'yellow' : 
+	 'grey'; //pokud neni v rozmezi
+			}
+
+
+			// nastaveni kartogramu
+			function style_1(feature) {
+				return {
+					weight: 10, //sila borderu
+					
+						opacity: 0.8, //pruhlednost linie
+						color: getColor_1(feature.properties.CISLO),  //barva borderu
+					
+				};
+			}
+
+			// nastaveni zvyrazeni pri prejeti mysi
+			function zvyrazneni(e) {
+				var layer = e.target;
+
+				layer.setStyle({
+				//bohuzel zvyrazneni  nefunguje pro linie,proto pozdeji vyple
+					weight: 10,
+					color: '#66FF00'
+					
+				});
+
+				if (!L.Browser.ie && !L.Browser.opera) {
+					layer.bringToFront();
+				}
+			}
+
+			// nastaveni zruseni zvyrazeni po odjeti mysi
+			var vrstva_1
+			function reset_1(e) {
+				vrstva_1.resetStyle(e.target);
+			}
+
+
+			// zkompletovani funkce kartogramu+zvyrazeni pri prejeti mysi		
+		
+				// popup okno se vsemi atributy + prilohy
+				function onEachFeature_1(f,l){
+				
+				var out = [];
+				if (f.properties){
+			
+				for(key in f.properties){
+					out.push(key+": "+f.properties[key]);
+				}
+				var q = f.properties.CISLO;
+				var lay = "1";
+				
+				l.bindPopup(out.join("<br />") + "<br />" + "<hr />" + "<a class='prilohy' id='xxx' onclick=\"showUser('"+q+"&lay="+lay+"');style.display='none';\">zobrazit přílohy</a> <div id='prilohy'></div>");
+				}
+				}
+
+				
+				//pokud je vrstva jako kartogram, tak tady bez var! to je definovano vyse 	
+				vrstva_1 = new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/1f259ddb0a14229a8a2d/raw"],{
+				draw: true,
+				style: style_1,
+				onEachFeature: onEachFeature_1
+				});
+				
+				
+				
+				
+				
+			// nastaveni jednotlivych barev kartogramu // d == 545 ? 'green' : nebo d >= 5 ? '#green' :
+			function getColor_28(d) { return  d == 7 ? '#FC4E2A' : 
+d == 5 ? '#FD8D3C' : 
+d == 2 ? '#FEB24C' : 
+d == 14 ? '#800026' : 
+d == 13 ? '#BD0026' : 
+d == 10 ? '#E31A1C' : 
+	 'grey'; //pokud neni v rozmezi
+			}
+
+
+			// nastaveni kartogramu
+			function style_28(feature) {
+				return {
+					weight: 1, //sila borderu
+					
+						fillOpacity: 0.8, //pruhlednost vyplne
+						color: 'white',  //barva borderu
+						fillColor: getColor_28(feature.properties.KUL) //barva vyplne
+					
+				};
+			}
+
+			// nastaveni zvyrazeni pri prejeti mysi
+			function zvyrazneni(e) {
+				var layer = e.target;
+
+				layer.setStyle({
+				//bohuzel zvyrazneni  nefunguje pro linie,proto pozdeji vyple
+					weight: 1,
+					color: '#66FF00'
+					
+				});
+
+				if (!L.Browser.ie && !L.Browser.opera) {
+					layer.bringToFront();
+				}
+			}
+
+			// nastaveni zruseni zvyrazeni po odjeti mysi
+			var vrstva_28
+			function reset_28(e) {
+				vrstva_28.resetStyle(e.target);
+			}
+
+
+			// zkompletovani funkce kartogramu+zvyrazeni pri prejeti mysi		
+		
+				// popup okno se vsemi atributy + prilohy
+				function onEachFeature_28(f,l){
+			
+				l.on({
+					mouseover: zvyrazneni,
+					mouseout: reset_28
+				});		
+				
+				var out = [];
+				if (f.properties){
+			
+				for(key in f.properties){
+					out.push(key+": "+f.properties[key]);
+				}
+				var q = f.properties.CISLO;
+				var lay = "28";
+				
+				l.bindPopup(out.join("<br />") + "<br />" + "<hr />" + "<a class='prilohy' id='xxx' onclick=\"showUser('"+q+"&lay="+lay+"');style.display='none';\">zobrazit přílohy</a> <div id='prilohy'></div>");
+				}
+				}
+
+				
+				//pokud je vrstva jako kartogram, tak tady bez var! to je definovano vyse 	
+				vrstva_28 = new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/ae9d1cc23db3a992bbec/raw"],{
+				draw: true,
+				style: style_28,
+				onEachFeature: onEachFeature_28
+				});
+				
+				
+				
+				
+				
+			var vrstva_4 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/1dad5fb8c1bbe236686e/raw"],{
+				style: function (feature) {
+				return { weight: 1, color: "white", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_white});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_5 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/3202a48b8660c446196b/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "grey", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_grey});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_6 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/1f259ddb0a14229a8a2d/raw"],{
+				style: function (feature) {
+				return { weight: 5, color: "white", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_white});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_7 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/7dcb59bbb986b6863439/raw"],{
+				style: function (feature) {
+				return { weight: 2, color: "brown", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_brown});}, 
+				onEachFeature:popUp    });  	
+				// popup okno se vsemi atributy + prilohy
+				function popUp_8(f,l){
+				var out = [];
+				if (f.properties){
+			
+				for(key in f.properties){
+					out.push(key+": "+f.properties[key]);
+				}
+				var q = f.properties.KOD;
+				var lay = "8";
+				
+				l.bindPopup(out.join("<br />") + "<br />" + "<hr />" + "<a class='prilohy' id='xxx' onclick=\"showUser('"+q+"&lay="+lay+"');style.display='none';\">zobrazit přílohy</a> <div id='prilohy'></div>");
+				}
+				}
+
+				var vrstva_8 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/4a2265ca031b78b1e64d/raw"],{
+				style: function (feature) {
+				return { weight: 1, color: "blue", fillOpacity: 0.8 };
+				},pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_blue});},  
+				onEachFeature:popUp_8    });  	
+			var vrstva_10 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/d92cf3a054a7a873d94d/raw"],{
+				style: function (feature) {
+				return { weight: 1, color: "black", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_black});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_11 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/c571e572f7ec692e3505/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "purple", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_purple});}, 
+				onEachFeature:popUp    });  	
+				// popup okno se vsemi atributy + prilohy
+				function popUp_12(f,l){
+				var out = [];
+				if (f.properties){
+			
+				for(key in f.properties){
+					out.push(key+": "+f.properties[key]);
+				}
+				var q = f.properties.Id;
+				var lay = "12";
+				
+				l.bindPopup(out.join("<br />") + "<br />" + "<hr />" + "<a class='prilohy' id='xxx' onclick=\"showUser('"+q+"&lay="+lay+"');style.display='none';\">zobrazit přílohy</a> <div id='prilohy'></div>");
+				}
+				}
+
+				var vrstva_12 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/cb62af0ee13754b0633c/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "purple", fillOpacity: 0.8 };
+				},
+				onEachFeature:popUp_12    });  	
+			var vrstva_13 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/033dbc3f0ebdba81674d/raw"],{
+				style: function (feature) {
+				return { weight: 2, color: "red", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_red});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_14 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/a7c74addf1d1e1730741/raw"],{
+				style: function (feature) {
+				return { weight: 2, color: "red", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_red});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_15 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/f5d03a95c9453b169b36/raw"],{
+				style: function (feature) {
+				return { weight: 2, color: "orange", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_orange});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_16 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/9d1c248c5362f223ae82/raw"],{
+				style: function (feature) {
+				return { weight: 2, color: "orange", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_orange});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_17 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/02915f89221249de2998/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "grey", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_grey});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_18 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/92f1aba3a78d804a3ef5/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "grey", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_grey});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_19 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/c4c27dc737ed0a11702f/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "yellow", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_yellow});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_20 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/0951d327bbb8d0042cf7/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "yellow", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_yellow});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_21 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/b1035c3b3d9e039acf80/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "green", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_green});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_22 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/8ddf6440727133a71805/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "green", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_green});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_23 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/65ce0acaec804622f46b/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "blue", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_blue});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_24 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/3341cb6ff263ed4790ff/raw"],{
+				style: function (feature) {
+				return { weight: 3, color: "blue", fillOpacity: 0.8 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_blue});}, 
+				onEachFeature:popUp    });  	
+			var vrstva_31 =	new L.GeoJSON.AJAX(["https://gist.githubusercontent.com/geocentrum1/880ab29c6976ab079cdd/raw"],{
+				style: function (feature) {
+				return { weight: 2, color: "orange", fillOpacity: 0.5 };
+				},	pointToLayer: function (feature, latlng) {return L.marker(latlng, {icon: ikonka_orange});}, 
+				onEachFeature:popUp    });  	
+				var vrstva_25 = new L.tileLayer.wms('http://services.cuzk.cz/wms/wms.asp',{
+	'interactive': true,
+	'layers':'RST_KN_I,RST_KMD_I,parcelni_cisla_i,hranice_parcel_i,omp',
+	//'title':'Katastrální mapa',
+	//'bgcolor': '0x272822',
+	'format': 'image/png',
+	//'maxZoom': 20,
+	'transparent': true,
+	'attribution': 'Katastrální mapa ČR &copy ČÚZK',
+	//'group':'doprava',
+	'draw':true,
+	crs: L.CRS.EPSG900913
+	});  
+
+ var federalLands = L.esri.dynamicMapLayer('http://virtus.upol.cz:6080/arcgis/rest/services/netek15/edit/MapServer', {
+    opacity: 0.5,
+	layers: [1],
+    useCors: false
+  });
+	
+// definovani vrstev (nazev, tooltip, legenda)	
+var overlays = {
+	
+	"pokus  <span data-tooltip aria-haspopup='true' class='has-tip' title='popisek ěščřžýáíé'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span> <span class='legend'><i class='polyg' style='background:orange;opacity:0.5;'></i></span>": vrstva_31, 
+	"Polohopi  <span data-tooltip aria-haspopup='true' class='has-tip' title='kartogram polygon'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span> <div class='legend'><i class='polyg_kart' style='background:#E31A1C;opacity:0.8;'></i>vlastniiii: 10<br><i class='polyg_kart' style='background:#BD0026;opacity:0.8;'></i>vlastniiii: 13<br><i class='polyg_kart' style='background:#800026;opacity:0.8;'></i>vlastniiii: 14<br><i class='polyg_kart' style='background:#FEB24C;opacity:0.8;'></i>vlastniiii: 2<br><i class='polyg_kart' style='background:#FD8D3C;opacity:0.8;'></i>vlastniiii: 5<br><i class='polyg_kart' style='background:#FC4E2A;opacity:0.8;'></i>vlastniiii: 7<br></div> ": vrstva_28, 
+	"Katastralní  <span data-tooltip aria-haspopup='true' class='has-tip' title='WMS: &copy; ČUZK'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span> <span class='legend'><i class='linie' style='background:white;height:2;opacity:0.8;'></i></span>": vrstva_25, 
+	"BodyI  <span data-tooltip aria-haspopup='true' class='has-tip' title='kartogram linie'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span> <div class='legend'><i class='linie_kart' style='background:yellow;height:10;opacity:0.8;'></i>CISLO: 542<br><i class='linie_kart' style='background:purple;height:10;opacity:0.8;'></i>CISLO: 543<br><i class='linie_kart' style='background:red;height:10;opacity:0.8;'></i>CISLO: 544<br><i class='linie_kart' style='background:green;height:10;opacity:0.8;'></i>CISLO: 545<br></div> ": vrstva_1, 
+	"Nazvyb  <span data-tooltip aria-haspopup='true' class='has-tip' title='bodova'><img src='../info.png' width='15px' height='15px' style='vertical-align:middle;'></span> <span class='legend'><i class='body' style='color:blue;'></i></span>": vrstva_8, 
+	"Bremena <span class='legend'><i class='linie' style='background:white;height:1;opacity:0.8;'></i></span>": vrstva_4, 
+	"Dalsi_l <span class='legend'><i class='linie' style='background:grey;height:3;opacity:0.8;'></i></span>": vrstva_5, 
+	"Druhpozl <span class='legend'><i class='linie' style='background:white;height:5;opacity:0.8;'></i></span>": vrstva_6, 
+	"Ku_bpej <span class='legend'><i class='linie' style='background:brown;height:2;opacity:0.8;'></i></span>": vrstva_7, 
+	"Vnikres <span class='legend'><i class='linie' style='background:black;height:1;opacity:0.8;'></i></span>": vrstva_10, 
+	"Cyklo_trasy_HY <span class='legend'><i class='linie' style='background:purple;height:3;opacity:0.8;'></i></span>": vrstva_11, 
+	"Cyklo_trasy_PR <span class='legend'><i class='linie' style='background:purple;height:3;opacity:0.8;'></i></span>": vrstva_12, 
+	"El_vedeni_NN <span class='legend'><i class='linie' style='background:red;height:2;opacity:0.8;'></i></span>": vrstva_13, 
+	"El_vedeni_VN <span class='legend'><i class='linie' style='background:red;height:2;opacity:0.8;'></i></span>": vrstva_14, 
+	"Kanalizace pripojky <span class='legend'><i class='linie' style='background:orange;height:2;opacity:0.8;'></i></span>": vrstva_15, 
+	"Kanalizace trasa <span class='legend'><i class='linie' style='background:orange;height:2;opacity:0.8;'></i></span>": vrstva_16, 
+	"Komunikace_HY <span class='legend'><i class='linie' style='background:grey;height:3;opacity:0.8;'></i></span>": vrstva_17, 
+	"Komunikace_PR <span class='legend'><i class='linie' style='background:grey;height:3;opacity:0.8;'></i></span>": vrstva_18, 
+	"Plynovod_STL <span class='legend'><i class='linie' style='background:yellow;height:3;opacity:0.8;'></i></span>": vrstva_19, 
+	"Plynovod_VTL <span class='legend'><i class='linie' style='background:yellow;height:3;opacity:0.8;'></i></span>": vrstva_20, 
+	"Turisticke trasy_HY <span class='legend'><i class='linie' style='background:green;height:3;opacity:0.8;'></i></span>": vrstva_21, 
+	"Turisticke trasy_PR <span class='legend'><i class='linie' style='background:green;height:3;opacity:0.8;'></i></span>": vrstva_22, 
+	"Vodovod pripojky <span class='legend'><i class='linie' style='background:blue;height:3;opacity:0.8;'></i></span>": vrstva_23, 
+	"Vodovod trasa <span class='legend'><i class='linie' style='background:blue;height:3;opacity:0.8;'></i></span>": vrstva_24, 
+ "federalLands <span class='legend'><i class='linie' style='background:blue;height:3;opacity:0.8;'></i></span>": federalLands, 
+};
+
+
+// nacteni podkladovych + vrstev
+var params = {};
+window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+  params[key] = decodeURIComponent(value);
+});
+
+// vlastni nastaveni mapy
+var map = new L.Map('map', {
+fullscreenControl: true,
+home: true,
+  maxZoom: 21,
+  center: [params.lat || 49.646082, params.lng || 17.137400], 
+  zoom: params.zoom || 17,
+  layers: layers,
+  twoFingerZoom: true,
+		contextmenu: true,
+          contextmenuWidth: 140,
+	      contextmenuItems: [{
+		      text: 'Souřadnice',
+		      callback: showCoordinates
+	      }, {
+		      text: 'Vycentrovat',
+		      callback: centerMap
+	      }, '-', {
+		      text: 'Přiblížit',
+		      icon: '../zoom-in.png',
+		      callback: zoomIn
+	      }, {
+		      text: 'Oddálit',
+		      icon: '../zoom-out.png',
+		      callback: zoomOut
+	      }]
+});
+
+  
+ 
+
+  federalLands.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return 'Name: ' + featureCollection.features[0].properties.NAME1;
+    }
+  });
+//zapnuti vrstvy ihned po nacteni
+	vrstva_1.addTo(map); 	base_1.addTo(map);  
+
+
+// zobrazeni vrstev v sidebaru
+var layers = new L.Control.Layers(base, overlays);
+layers._map = map;
+var controlDiv = layers.onAdd(map);
+document.getElementById('controls').appendChild(controlDiv);
+
+// lokalizace polohy
+L.control.locate().addTo(map);
+
+// mereni+meritko
+map.addControl(new L.Control.Scale());
+//var d = new L.Control.Distance(); map.addControl(d);
+
+// tisk
+L.easyPrint().addTo(map);
+
+// minimap
+var ggl1 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png')
+var miniMap = new L.Control.MiniMap(ggl1, { toggleDisplay: true}).addTo(map);
+
+//souradnice
+L.control.mousePosition().addTo(map);
+
+//mereni
+L.Control.measureControl().addTo(map);
+
+//sidebar
+var sidebar = L.control.sidebar('sidebar').addTo(map);
+ 
+// hledani fulltext
+var searchControlF = new L.esri.Controls.Geosearch().addTo(map);
+var results = new L.LayerGroup().addTo(map);
+searchControlF.on('results', function(data){
+	results.clearLayers();
+	for (var i = data.results.length - 1; i >= 0; i--) {
+	  results.addLayer(L.marker(data.results[i].latlng));
+	}
+});
+
+  
+
+  
+  
+<!-- hledani atributu -->
+	
+			var searchControl = new L.Control.Search({layer: vrstva_28, propertyName: 'LABEL', text: 'Hledat v LABEL', wrapper:'tabs-1' });
+			searchControl.on('search_locationfound', function(e) {
+				e.layer.setStyle({ weight: 5, color: "#66FF00", opacity: 1});
+				if (!L.Browser.ie && !L.Browser.opera) {
+						layer.bringToFront();
+					}
+			}).on('search_collapsed', function(e) {
+				vrstva_28.setStyle({weight: 1, color: "white", opacity: 1});	
+			});
+			map.addControl( searchControl ); 
+			
+			var searchControl = new L.Control.Search({layer: vrstva_28, propertyName: 'CISLO', text: 'Hledat v CISLO', wrapper:'tabs-2' });
+			searchControl.on('search_locationfound', function(e) {
+				e.layer.setStyle({ weight: 5, color: "#66FF00", opacity: 1});
+				if (!L.Browser.ie && !L.Browser.opera) {
+						layer.bringToFront();
+					}
+			}).on('search_collapsed', function(e) {
+				vrstva_28.setStyle({weight: 1, color: "white", opacity: 1});	
+			});
+			map.addControl( searchControl ); 
+		 
+</script> 
+
+
+
+<!-- tooltip -->
+<script src="../foundation.min.js"></script>
+<script>
+  $(document).foundation();
+  
+  $(function() {
+	$( "#tabs" ).tabs();
+	});
+</script>
+ <!-- tooltip -->
+ 
+</body>
+</html>

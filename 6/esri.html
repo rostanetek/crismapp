@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Custom Popup with Dynamic Map Layer</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <!-- Load Leaflet from CDN-->
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
+  <script src="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.5/esri-leaflet.js"></script>
+<script src="http://calvinmetcalf.github.io/shapefile-js/dist/shp.min.js"> </script>
+  <style>
+    body {margin:0;padding:0;}
+    #map {position: absolute;top:0;bottom:0;right:0;left:0;}
+	html body div#map.leaflet-container.leaflet-fade-anim div.leaflet-map-pane div.leaflet-objects-pane div.leaflet-overlay-pane img.leaflet-image-layer.leaflet-zoom-animated 
+
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+  var map = L.map('map').setView([49, 17], 9);
+
+  L.esri.basemapLayer('Gray').addTo(map);
+
+  
+
+  var vyjezdy = new L.esri.dynamicMapLayer('http://virtus.upol.cz:6080/arcgis/rest/services/netek15/edit/MapServer', {layers: [2]});
+
+  
+
+  
+  
+  vrstva_47.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return 	'objectid_12: ' + featureCollection.features[0].properties.objectid_12 + '<br />' +
+				'typ: ' + featureCollection.features[0].properties.typ	+ '<br />' +
+				'podtyp: ' + featureCollection.features[0].properties.podtyp	+ '<br />' +
+				'typ_ssu: ' + featureCollection.features[0].properties.typ_ssu	+ '<br />' +
+				'popis_typu: ' + featureCollection.features[0].properties.popis_typu	+ '<br />' +
+				'okres: ' + featureCollection.features[0].properties.okres	+ '<br />' +
+				'obec: ' + featureCollection.features[0].properties.obec	+ '<br />' +
+				'cast_obce: ' + featureCollection.features[0].properties.cast_obce	+ '<br />' +
+				'adresa: ' + featureCollection.features[0].properties.ulice	+ featureCollection.features[0].properties.cislo_d	+'<br />' +
+				'objekt: ' + featureCollection.features[0].properties.objekt	+ '<br />' +
+				'ohlaseni: ' + featureCollection.features[0].properties.ohlaseni	+ '<br />' +
+				'lokalizace: ' + featureCollection.features[0].properties.lokalizace	+ '<br />' 
+	  ; 
+    }
+  });
+  
+
+</script>
+
+</body>
+</html>

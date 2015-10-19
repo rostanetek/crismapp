@@ -1,0 +1,43 @@
+.leaflet-control-minimap {
+   /* border: 2px solid white;*/
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	left:50px;
+    background: #f8f8f9;
+    transition: all .2s;
+}
+
+.leaflet-control-minimap a {
+    background-color: rgba(0, 0, 0, 0.7);
+    background-repeat: no-repeat;
+    z-index: 99999;
+    transition: all .2s;
+}
+
+.leaflet-control-minimap a.minimized {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+
+}
+
+.leaflet-control-minimap-toggle-display {
+    background-image: url("toggle.png");
+    height: 19px;
+    width: 19px;
+    position: absolute;
+    bottom: 0;
+-webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+/* Old IE */
+.leaflet-oldie .leaflet-control-minimap {
+	border: 1px solid #999;
+}
+
+.leaflet-oldie .leaflet-control-minimap a {
+	background-color: #fff;
+}
+
+.leaflet-oldie .leaflet-control-minimap a.minimized {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}

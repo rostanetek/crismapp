@@ -1,0 +1,100 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,&subset=latin,latin-ext);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+.container {
+	width: 1000px;
+	height: auto;
+	background: #ffffff;
+	
+	margin: auto;
+	text-align: left;
+}
+.header {
+	padding: 10px;
+}
+.main_title {
+	background: #cccccc;
+	color: #ffffff;
+	padding: 10px;
+	font-size: 20px;
+	line-height: 20px;
+}
+.content {
+	padding: 10px;
+	min-height: 100px;
+	text-align: center;
+}
+.footer {
+	padding: 10px;
+	text-align: right;
+}
+.footer a {
+	color: #999999;
+	text-decoration: none;
+}
+.footer a:hover {
+	text-decoration: underline;
+}
+/* Sortable ******************/
+#sortable { 
+	list-style: none; 
+	text-align: left; 
+}
+#sortable li { 
+	margin: 0 0 10px 0;
+	height: 25px; 
+	background: #f9f9f9;
+	border: 1px solid #dddddd;
+	color: #222222;
+}
+
+@font-face {
+font-family: 'FontAwesome';
+src: url('../../font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
+src: url('../../font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../../font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../../font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../../font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+#sortable li span:before
+{ 
+color: white;
+font-family: FontAwesome;
+content: "\f047";
+}
+
+
+#sortable li span {
+text-align: center;
+	background-color: #008cba;
+	width: 200px;
+	height: 25px; 
+	display: inline-block;
+	float: left;
+	cursor: move;
+	margin-right: 10px;
+}
+#sortable li img {
+	height: 65px;
+	border: 5px solid #cccccc;
+	display: inline-block;
+	float: left;
+}
+#sortable li div {
+	padding: 5px;
+}
+#sortable li h2 {    
+	font-size: 12px; font-weight: 300;
+}
+
+

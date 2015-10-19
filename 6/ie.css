@@ -1,0 +1,16 @@
+a{
+border: 0px;
+}
+
+a img{
+border: 0px;
+}
+
+#map_parametry {  
+height: 230px; 
+}
+	
+/* hledaci formular kvuli IE */
+#tabs div{
+margin-top:28px !important;
+}

@@ -1,0 +1,15 @@
+.leaflet-control-home :before{
+font-family: FontAwesome;
+content: "\f015";
+background-color: rgb(0, 0, 0, 0.7);
+font-size:150%;
+}
+
+.leaflet-control-home:hover  { 
+
+
+background-color: gold; 
+
+
+}
+/*.leaflet-control-home { margin-top: 5px }*/
