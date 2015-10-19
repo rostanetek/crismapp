@@ -1,12 +1,8 @@
 <?php
 /*	require_once('auth.php'); */
 ?>
-
 <?php
 include ("db.php"); 
-
-
-
 
 
 if($_GET){
