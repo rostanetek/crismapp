@@ -4,7 +4,7 @@
 <?php
 include ("db.php"); 
 
-
+# Poznámka navíc
 if($_GET){
 	$scenar = $_GET["scenar"];
 } 
