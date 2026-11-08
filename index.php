@@ -428,21 +428,21 @@ echo " \": base_".$row['id']."," ;
 
 var ikonka_red = L.icon({
 iconUrl: '../promo_red.png',
-iconSize: [20, 20],
+iconSize: [30, 30],
 iconAnchor: [10, 10],
 popupAnchor: [0, -28]
 });			
 			
 var ikonka_orange = L.icon({
 iconUrl: '../promo_orange.png',
-iconSize: [20, 20],
+iconSize: [30, 30],
 iconAnchor: [10, 10],
 popupAnchor: [0, -28]
 });			
 
 var ikonka_violet = L.icon({
 iconUrl: '../promo_violet.png',
-iconSize: [20, 20],
+iconSize: [30, 30],
 iconAnchor: [10, 10],
 popupAnchor: [0, -28]
 });			
